@@ -1,0 +1,47 @@
+<div class="page">
+  <div class="navbar">
+    <div class="navbar-bg"></div>
+    <div class="navbar-inner">
+      <div class="left">
+        <a href="#" class="link back">
+          <i class="icon f7-icons arrow-back">arrow_left</i>
+        </a>
+      </div>
+      <div class="title">Item List</div>
+    </div>
+  </div>
+  <div class="page-content">
+    <!-- search functionalilty -->
+    <!-- <form action="{% url 'category_items' %}" method="GET">
+      <label for="searchitem">Search</label>
+      <input type="text" id="searchitem" name="q" placeholder="search...">
+    </form> -->
+    <div class="post-list">
+      {% for item in cat_items %}
+      <dl-routing>
+      <a href="{{item.id}}" data-href="/item/" class="link post-horizontal">
+        <div class="infos">
+          <div class="post-category">{{ item }}</div>
+          <div class="post-title">{{item.description}}</div>
+          {% if item.hscode %}
+          <div class="post-date">{{item.hscode}}</div>
+          {% endif %}
+        </div>
+        <div class="post-image"><img src="{{item.image.url}}" alt=""></div>
+      </a>
+    </dl-routing>
+      {% endfor %}
+      
+      <!-- sample of the item
+      <a href="/single/" class="link post-horizontal">
+        <div class="infos">
+          <div class="post-category">Health</div>
+          <div class="post-title">Cutting-Edge Medical Breakthrough Promises New Hope for Tropical Diseases Vaccines
+          </div>
+          <div class="post-date">2 days ago</div>
+        </div>
+        <div class="post-image"><img src="img/post-list/6.jpg" alt=""></div>
+      </a> -->
+    </div>
+  </div>
+</div>
