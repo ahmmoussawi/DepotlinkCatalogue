@@ -34,7 +34,7 @@ def home(request):
         return render(request, 'pages/pages/home.html', context)
         pass
     else:
-        return render(request, 'base/room.html')
+        return render(request, 'pages/pages/room.html')
         # Handle PC-specific logic
         pass
     
