@@ -198,7 +198,7 @@ iframe {
   display: none;
 }
 .navbar-profile img {
-  border-radius: 50%;
+  border-radius: 25%;
   width: 30px;
 }
 .navbar-arrow {
@@ -2224,13 +2224,13 @@ img.actor-image {
 }
 .category-name {
   position: absolute;
-  top: 50%;
+  /* top: 50%; */
   width: 100%;
   text-align: center;
   color: #fff;
   font-weight: 600;
   font-size: 18px;
-  line-height: 0;
+  /* line-height: 0; */
   text-shadow: 0 0 20px #000;
 }
 

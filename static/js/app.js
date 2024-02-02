@@ -294,7 +294,7 @@ var app = new Framework7({
     },
     {
       path: "/movie/",
-      url: "pages/pages/movie.html",
+      url: "static/pages/pages/movie.html",
     },
     {
       path: "/album/",
@@ -497,17 +497,18 @@ $$(document).on("page:init", '.page[data-name="pull-to-refresh"]', function (e) 
   pullToRefreshPage.on("ptr:refresh", function (e) {
     // Emulate 2s loading and generate new items
     setTimeout(function () {
-      var html =
-        '<a href="/single/" class="link post-horizontal">' +
-        '<div class="infos">' +
-        '<div class="post-category">Fashion</div>' +
-        '<div class="post-title">The Importance of Supporting Local and Independent Fashion Brands</div>' +
-        '<div class="post-date">2 hours ago</div>' +
-        "</div>" +
-        '<div class="post-image">NEW</div>' +
-        "</a>";
+      location.reload();
+      // var html =
+      //   '<a href="/single/" class="link post-horizontal">' +
+      //   '<div class="infos">' +
+      //   '<div class="post-category">Fashion</div>' +
+      //   '<div class="post-title">The Importance of Supporting Local and Independent Fashion Brands</div>' +
+      //   '<div class="post-date">2 hours ago</div>' +
+      //   "</div>" +
+      //   '<div class="post-image">NEW</div>' +
+      //   "</a>";
       // Prepend new element
-      pullToRefreshPage.find(".post-list").prepend(html);
+      //pullToRefreshPage.find(".post-list").prepend(html);
       // When loading done, we reset it
       app.ptr.done();
     }, 2000);
@@ -740,7 +741,7 @@ $$(document).on("page:init", function (e) {
   });
 });
 
-//featured categories link to items
+//routing used to adjust the routing with django and javascript
 $$("dl-routing a").on("click", function (e) {
  
   console.log($$(this).attr("href"))
