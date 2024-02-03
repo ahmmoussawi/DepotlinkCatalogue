@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.http import JsonResponse
 from django.db.models import Q
@@ -71,11 +71,13 @@ def Category_items(request):
         #     Q(name__icontains=q) |
         #     Q(description__icontains=q)
         # )
+        
         context = {'category':category, 'cat_items':cat_items}
     else:
         context={}
     
     return render(request,'pages/components/post-list.html',context)
+
 
 def item(request):
     item_id = request.GET.get('_id', None)

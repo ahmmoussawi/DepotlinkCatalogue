@@ -16572,7 +16572,7 @@ table.data-table {
 }
 .swiper-slide {
   flex-shrink: 0;
-  width: 100%;
+  width: 60%;
   height: 100%;
   position: relative;
   transition-property: transform;

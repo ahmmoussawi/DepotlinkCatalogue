@@ -497,7 +497,7 @@ $$(document).on("page:init", '.page[data-name="pull-to-refresh"]', function (e) 
   pullToRefreshPage.on("ptr:refresh", function (e) {
     // Emulate 2s loading and generate new items
     setTimeout(function () {
-      location.reload();
+      //location.reload(); //added by to forece reload
       // var html =
       //   '<a href="/single/" class="link post-horizontal">' +
       //   '<div class="infos">' +
@@ -773,8 +773,30 @@ $$(document).on("page:init", function (e) {
     });
   });
 
-
-
+  //item search
+  $$(document).on('page:init', function (e) {
+    $$('.itemsearch').on('input', function (e) {
+      var input, filter, dl, dlItems, txtValue;
+      input = document.getElementById('searchitem');
+      filter = input.value.toUpperCase();
+      dl = document.getElementsByTagName('dl-routing');
+    
+      // Loop through all dl-routing elements, and hide those who don't match the search query
+      for (var i = 0; i < dl.length; i++) {
+        // Find the .post-category within the dl-routing element
+        dlItems = dl[i].getElementsByClassName('post-category');
+        if (dlItems.length > 0) {
+          txtValue = dlItems[0].textContent || dlItems[0].innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            dl[i].style.display = "";
+          } else {
+            dl[i].style.display = "none";
+          }
+        }
+      }
+    });
+  });
+  
 // 15. Switch Theme
 
 $$(".switch-theme").on("click", function () {
