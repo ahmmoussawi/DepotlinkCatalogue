@@ -1012,8 +1012,40 @@ body {
   height: 50px; /* Adjust based on the size of your logo */
   width: auto; /* Maintain aspect ratio */
 }
-      
-    
+
+/* slider animatin for the news */
+.slider {
+  position: relative;
+  width: 100%;
+  height: 100px; /* Adjust based on content */
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  animation: slide-in 12s infinite; /* Increased duration from 6s to 12s */
+}
+
+@keyframes slide-in {
+  0%, 100% { opacity: 0; transform: translateX(-100%); }
+  5%, 33% { opacity: 1; transform: translateX(0); }
+  38%, 66% { opacity: 0; transform: translateX(100%); }
+}
+
+.slide:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.slide:nth-child(2) {
+  animation-delay: 4s; /* Adjusted delay for a 12s cycle */
+}
+
+.slide:nth-child(3) {
+  animation-delay: 8s; /* Adjusted delay for a 12s cycle */
+}
+
+ 
       
      
 </style>
@@ -1129,13 +1161,39 @@ body {
           </div>
           <div class="limit-icon"></div>
         </div>
-        <div class="plan-limit">
+
+        <!-- make it slide -->
+        <div class="slider">
+          <div class="slide plan-limit">
+            <div class="limit-text">
+              <div><strong>$0.00</strong><span>Delivery</span></div>
+              <span class="limit-subtext">Free delivery all across Lebanon</span>
+            </div>
+            <div class="limit-icon upgrade"></div>
+          </div>
+          <div class="slide plan-limit">
+            <div class="limit-text">
+              <div><strong>$5.00</strong><span>Express Delivery</span></div>
+              <span class="limit-subtext">Get it faster with express service</span>
+            </div>
+            <div class="limit-icon upgrade"></div>
+          </div>
+          <div class="slide plan-limit">
+            <div class="limit-text">
+              <div><strong>$20.00</strong><span>International Shipping</span></div>
+              <span class="limit-subtext">Available for select countries</span>
+            </div>
+            <div class="limit-icon upgrade"></div>
+          </div>
+        </div>
+        
+        <!-- <div class="plan-limit">
           <div class="limit-text">
             <div><strong>$0.00</strong><span>Delivery</span></div>
             <span class="limit-subtext">Free delivery all across Lebanon</span>
           </div>
           <div class="limit-icon upgrade"></div>
-        </div>
+        </div> -->
       </div>
       <div class="bottom-icons">
         <div class="chart"><div></div></div>
