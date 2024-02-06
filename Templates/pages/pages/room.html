@@ -422,6 +422,7 @@ body {
   background-color: transparent;
   z-index: 4;
   overflow: hidden;
+  pointer-events: none;
 }
 
 .phone-reflections .reflection-1 {
@@ -1012,6 +1013,51 @@ body {
   height: 50px; /* Adjust based on the size of your logo */
   width: auto; /* Maintain aspect ratio */
 }
+/* qr code container */
+/* Initial state of the image */
+.qrcode-container {
+  position: fixed; /* Use fixed to position relative to the viewport */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the image */
+  opacity: 0; /* Start visible */
+  transition: opacity 0.3s ease; /* Smooth transition for fading */
+  z-index: 10000;
+  pointer-events: none;
+}
+
+/* Animation keyframes */
+@keyframes moveToCorner {
+  0% {
+    top: 50%;
+    left: 50%;
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+  }
+  50% {
+    top: 25%;
+    /* right: 30%; */
+    left: 75%; /* Reset left when moving to the right */
+    transform: translate(0%, 0%); /* Adjust to align to the corner */
+    opacity: 1;
+  }
+  100% {
+    top: 10%;
+    right: 40%;
+    left: 75%; /* Reset left when moving to the right */
+    transform: translate(0%, 0%); /* Adjust to align to the corner */
+    opacity: 1;
+  }
+}
+
+/* Apply the animation */
+.qrcode-container.animate {
+  animation: moveToCorner 3s forwards; /* Adjust time as needed */
+}
+
+
 
 /* slider animatin for the news */
 .slider {
@@ -1055,6 +1101,9 @@ body {
 <!-- Pure CSS image (no graphics included) -->
 <div class="logo-container">
   <img src="{%  static 'images/depotlinklogo.png' %}" srcset="">
+</div>
+<div class="qrcode-container">
+  <img src="{%  static 'images/depotlinkqr.png' %}" width="180" height="180" srcset="">
 </div>
 
 <div class="background-panels">
@@ -1120,7 +1169,7 @@ body {
       </div>
       <div class="nav">
         <div class="messages"></div>
-        <div class="phone-number">+961 (1) 45-56-05</div>
+        <div class="phone-number">+961 (81) 610 602</div>
         <div class="menu"></div>
       </div>
       <div class="current-plan">
@@ -1138,20 +1187,8 @@ body {
       </div>
       <div class="plan-box">
         <div style="text-align: center;">
-          <img src="{%  static 'images/depotlinkqr.png' %}" width="85%" height="auto" srcset="">
+          <img src="{%  static 'images/depotlinkqr.png' %}" id="depotlink-qr" width="85%" height="auto" style="cursor: grab;" srcset="">
         </div>
-        <!-- <div class="plan-options">
-          <div>
-            <div>15<span>GB</span></div>
-            <div>Internet</div>
-          </div>
-          <div>
-            <div>1500<span>Mins</span></div>
-            <div>Within Russia</div>
-          </div>
-        </div>
-        <div class="plan-text"><strong>Free calls</strong> within the network</div>
-        <a class="change-plan" href="">Change plan</a> -->
       </div>
       <div class="plan-list">
         <div class="plan-limit">
@@ -1164,36 +1201,28 @@ body {
 
         <!-- make it slide -->
         <div class="slider">
-          <div class="slide plan-limit">
+          <div class="slide plan-limit" style="border-bottom: 0px;">
             <div class="limit-text">
-              <div><strong>$0.00</strong><span>Delivery</span></div>
-              <span class="limit-subtext">Free delivery all across Lebanon</span>
+              <div><strong> 📦 </strong><span>Distributor</span></div>
+              <span class="limit-subtext">Fast Delivery, Diverse Choices</span>
             </div>
             <div class="limit-icon upgrade"></div>
           </div>
           <div class="slide plan-limit">
             <div class="limit-text">
-              <div><strong>$5.00</strong><span>Express Delivery</span></div>
-              <span class="limit-subtext">Get it faster with express service</span>
+              <div><strong> 🔗 </strong><span>Success</span></div>
+              <span class="limit-subtext">Bridging Brands & Buyers</span>
             </div>
             <div class="limit-icon upgrade"></div>
           </div>
           <div class="slide plan-limit">
             <div class="limit-text">
-              <div><strong>$20.00</strong><span>International Shipping</span></div>
-              <span class="limit-subtext">Available for select countries</span>
+              <div><strong> 🌟 </strong><span>Marketplace Gateway</span></div>
+              <span class="limit-subtext">Elevating Brands & Empowering Markets</span>
             </div>
             <div class="limit-icon upgrade"></div>
           </div>
         </div>
-        
-        <!-- <div class="plan-limit">
-          <div class="limit-text">
-            <div><strong>$0.00</strong><span>Delivery</span></div>
-            <span class="limit-subtext">Free delivery all across Lebanon</span>
-          </div>
-          <div class="limit-icon upgrade"></div>
-        </div> -->
       </div>
       <div class="bottom-icons">
         <div class="chart"><div></div></div>
@@ -1215,6 +1244,15 @@ body {
 </div>
 
 <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const qrImage = document.getElementById('depotlink-qr'); // The clickable image's ID
+  const qrContainer = document.querySelector('.qrcode-container');
+
+  qrImage.addEventListener('click', function() {
+    qrContainer.style.opacity = '1'; // Make the image visible before it starts to rise
+    qrContainer.classList.add('animate'); 
+  });
+});
 // JavaScript to update the time
 function updateTime() {
   const now = new Date();
