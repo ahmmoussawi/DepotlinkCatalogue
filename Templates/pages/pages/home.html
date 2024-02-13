@@ -374,7 +374,7 @@
               <div class="post-list">
                 {% for pitem in popular_items %}
                 <dl-routing>
-                  <a href="{{pitem.id}}" data-href="/item/" class="link post-horizontal">
+                  <a href="{{pitem.item.id}}" data-href="/item/" class="link post-horizontal">
                   <div class="infos">
                     <div class="post-category">{{pitem.item}}</div>
                     <div class="post-title">{{pitem.item.description}}</div>

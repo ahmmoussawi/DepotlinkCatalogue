@@ -22,7 +22,33 @@
     </div>
     <input type="text" id="searchitem" name ="itemsearch" class ="itemsearch" placeholder="Search items...">
     
-    <div class="post-list">
+    {% for item in cat_items %}
+    <dl-routing>
+      <a href="{{item.id}}" data-href="/item/" class="link post-horizontal">
+        <div class="movie-header" style="margin-top: 20px;width: 100%;">
+          <img src="{{item.image.url}}" alt="" class="movie-cover" style="max-height: 250px !important;">
+          <div class="card-image-footer" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, rgb(70 82 99) 100%);">
+            <div class="card-category bg-color-white" style="display: none;">Movies</div>
+            <h2>A Guide to the Best Action Movies of All Time</h2>
+          </div>
+          <div class="movie-infos" style="width: 33% !important;">
+            <div class="movie-block" style="padding: 33px 0 !important;">
+              <i class="icon f7-icons">star_circle</i>
+              <div class="movie-block-name">{{ item.category.brand.name }}</div>
+              <div class="movie-block-text">{{item.code}}</div>
+            </div>
+            <div class="movie-block">
+              <i class="icon f7-icons">info_circle_fill</i>
+              <div class="movie-block-name">{{ item.hscode }}</div>
+              <div class="movie-block-text">{{ item.category.name }}</div>
+            </div>
+            
+          </div>
+        </div>
+      </a>
+    </dl-routing>
+    {% endfor %}
+    <!-- <div class="post-list">
       {% for item in cat_items %}
       <dl-routing>
       <a href="{{item.id}}" data-href="/item/" class="link post-horizontal">
@@ -37,17 +63,8 @@
       </a>
     </dl-routing>
       {% endfor %}
+       -->
       
-      <!-- sample of the item
-      <a href="/single/" class="link post-horizontal">
-        <div class="infos">
-          <div class="post-category">Health</div>
-          <div class="post-title">Cutting-Edge Medical Breakthrough Promises New Hope for Tropical Diseases Vaccines
-          </div>
-          <div class="post-date">2 days ago</div>
-        </div>
-        <div class="post-image"><img src="img/post-list/6.jpg" alt=""></div>
-      </a> -->
     </div>
   </div>
 </div>
