@@ -24,12 +24,12 @@
     
     {% for item in cat_items %}
     <dl-routing>
-      <a href="{{item.id}}" data-href="/item/" class="link post-horizontal">
+      <a href="{{item.id}}" data-href="/item/" class="link post-horizontal" style="margin-bottom: 12px;">
         <div class="movie-header" style="margin-top: 20px;width: 100%;">
           <img src="{{item.image.url}}" alt="" class="movie-cover" style="max-height: 250px !important;">
-          <div class="card-image-footer" style="background-image: linear-gradient(to left, rgba(0, 0, 0, 0) 0, rgb(70 82 99) 100%);width: auto !important;">
+          <div class="card-image-footer" style="background-image: linear-gradient(to left, rgba(0, 0, 0, 0) 0, rgb(70 82 99) 100%);width: 96% !important;padding: 5% 18px 15px 18px;">
             <div class="card-category bg-color-white" style="display: none;">Movies</div>
-            <h2>A Guide to the Best Action Movies of All Time</h2>
+            <h2>{{ item.name}}</h2>
           </div>
           <div class="movie-infos" style="width: 33% !important;">
             <div class="movie-block" style="padding: 33px 0 !important;">
