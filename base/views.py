@@ -65,14 +65,11 @@ def Category_items(request):
     if category_id:
         category = Category.objects.get(id = category_id)
         cat_items = category.item_set.all()
-        # q = request.GET.get('q') if request.GET.get('q') != None else ''
-        # items = Item.objects.filter(
-        #     Q(code__icontains=q) |
-        #     Q(name__icontains=q) |
-        #     Q(description__icontains=q)
-        # )
+        brand_id = category.brand.id
+        brand = Brand.objects.get(id = brand_id)
+        brand_cat = brand.category_set.all()
         
-        context = {'category':category, 'cat_items':cat_items}
+        context = {'category':category, 'cat_items':cat_items,'brand_cat':brand_cat, 'brand_id':brand_id}
     else:
         context={}
     

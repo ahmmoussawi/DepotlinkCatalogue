@@ -4,27 +4,33 @@
     <div class="navbar-bg"></div>
     <div class="navbar-inner">
       <div class="left">
-        <a href="#" class="link back">
-          <i class="icon f7-icons arrow-back">arrow_left</i>
-        </a>
+        <home-link>
+          <a href="#" class="home-link">
+            <i class="icon f7-icons arrow-back">arrow_left</i>
+          </a>
+        </home-link>
       </div>
       <div class="title">Categories</div>
-      <div class="right">
+      <!-- <div class="right">
         <home-link>
         <a href="#" class="home-link">
           <i class="icon f7-icons arrow-back">arrowshape_turn_up_left</i>
         </a>
       </home-link>
-      </div>
+      </div> -->
     </div>
   </div>
   <div class="page-content">
-    <div class="section-title">Your Favorites</div>
+    <div class="section-title">Brands</div>
     <swiper-container class="full-width categories-slider" slides-per-view="auto" space-between="10"
       slides-offset-after="15" slides-offset-before="15" speed="400">
-      {% for brand in brands %}
+      {% for headerbrand in brands %}
       <swiper-slide>
-        <a href="{{brand.id}}" data-href="/categories/" class="link category-slide">{{brand.name}}</a>
+        {% if headerbrand.id == brand.id %}
+      <a href="{{headerbrand.id}}" data-href="/categories/" class="link category-slide" style="background-color: var(--f7-list-chevron-icon-color);">{{headerbrand.name}}</a>
+      {% else %}
+      <a href="{{headerbrand.id}}" data-href="/categories/" class="link category-slide">{{headerbrand.name}}</a>
+      {% endif %}
       </swiper-slide>
       {% endfor %}
       <!-- <swiper-slide>
