@@ -1,3 +1,4 @@
+
 <div class="page" data-name="pull-to-refresh">
   <div class="navbar">
     <div class="navbar-bg"></div>
@@ -9,12 +10,17 @@
         </a>
       </dl-routing>
       </div>
-      <div class="title">Item List</div>
+      <div class="title">{{ category.brand.name}}</div>
     </div>
   </div>
-  <div class="page-content ptr-content">
+  <div class="page-content">
     <swiper-container class="full-width categories-slider" slides-per-view="auto" space-between="10"
-    slides-offset-after="15" slides-offset-before="15" speed="400" style="margin-bottom: 0px !important;">
+    slides-offset-after="15" slides-offset-before="15" speed="400" style="margin-bottom: 0px !important;position: sticky;
+    top: 0;
+    background-color: #fff;
+    font-size: 20px;
+    z-index: 10;
+    padding: 10px !important;">
     {% for brandcategory in brand_cat %}
         <swiper-slide>
         {% if brandcategory.id == category.id %}
@@ -25,10 +31,6 @@
         </swiper-slide>
     {% endfor %}
   </swiper-container>
-    <div class="ptr-preloader">
-      <div class="preloader color-multi"></div>
-      <div class="ptr-arrow"></div>
-    </div>
     <input type="text" id="searchitem" name ="itemsearch" class ="itemsearch" placeholder="Search items...">
 
     {% for item in cat_items %}

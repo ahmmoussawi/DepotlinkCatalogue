@@ -5,6 +5,7 @@ from django.db.models import Q
 from datetime import date
 from django.utils import timezone
 from .models import Brand, Category, Item, PopularItems, Offer, Firm
+
 import re
 # Create your views here.
 rooms =[
@@ -18,8 +19,8 @@ def home(request):
         company = Firm.objects.first()
         brands = Brand.objects.all().order_by('-updated')
         categories = Category.objects.all().order_by('-updated')[:6]
-        items = Item.objects.all().order_by('-created')[:4]
-        popular_items = PopularItems.objects.filter(validity_date__gte=date.today())
+        items = Item.available_items.all().order_by('-created')[:4]
+        popular_items = PopularItems.objects.filter(validity_date__gte=date.today(),item__not_available=False)
         current_date = timezone.now().date()
         star_offer = Offer.objects.filter(
             is_star_offer=True, 
@@ -64,7 +65,7 @@ def Category_items(request):
     category_id = request.GET.get('_id',None)
     if category_id:
         category = Category.objects.get(id = category_id)
-        cat_items = category.item_set.all()
+        cat_items = Item.available_items.filter(category=category)
         brand_id = category.brand.id
         brand = Brand.objects.get(id = brand_id)
         brand_cat = brand.category_set.all()

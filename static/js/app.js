@@ -787,6 +787,7 @@ $$(document).on("page:init", function (e) {
         dlItems = dl[i].getElementsByClassName('post-category');
         if (dlItems.length > 0) {
           txtValue = dlItems[0].textContent || dlItems[0].innerText;
+          console.log(txtValue);
           if (txtValue.toUpperCase().indexOf(filter) > -1) {
             dl[i].style.display = "";
           } else {

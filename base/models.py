@@ -31,6 +31,10 @@ class Category(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.brand.name}"
+    
+class AvailableItemsManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(not_available=False)
 
 class Item(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
@@ -38,16 +42,20 @@ class Item(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(null= True)
     hscode = models.CharField(max_length=100, null=True)
+    not_available = models.BooleanField(default=False)
     image = models.ImageField(null=True,blank=True,upload_to='items/',default='defaultitem.png')
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add = True)
+
+    objects = models.Manager()  # The default manager.
+    available_items = AvailableItemsManager()
 
     def __str__(self):
         return f"{self.code} - {self.name}"
     
 class PopularItems(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
-    validity_date = models.DateField()
+    validity_date = models.DateField(null=True)
 
     def is_valid(self):
         return date.today() <= self.validity_date
