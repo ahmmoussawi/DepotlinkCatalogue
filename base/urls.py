@@ -10,5 +10,6 @@ urlpatterns = [
     path('pages/pages/offer.html/', views.offer, name ="offer"),
     path('pages/pages/item.html/', views.item, name ="item"),
     path('pages/pages/categories-list.html',views.categories, name="categories"),
+    path('itempdf/<str:pk>/',views.Category_items_pdf, name="itempdf"),
 
 ]

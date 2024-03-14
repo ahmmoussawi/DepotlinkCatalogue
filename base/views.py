@@ -76,6 +76,20 @@ def Category_items(request):
     
     return render(request,'pages/components/post-list.html',context)
 
+def Category_items_pdf(request,pk):
+    category_id = pk
+    if category_id:
+        category = Category.objects.get(id = category_id)
+        cat_items = Item.available_items.filter(category=category)
+        brand_id = category.brand.id
+        brand = Brand.objects.get(id = brand_id)
+        brand_cat = brand.category_set.all()
+        
+        context = {'category':category, 'cat_items':cat_items,'brand_cat':brand_cat, 'brand_id':brand_id, 'brand': brand}
+    else:
+        context={}
+    
+    return render(request,'pages/pages/itempdf.html',context)
 
 def item(request):
     item_id = request.GET.get('_id', None)

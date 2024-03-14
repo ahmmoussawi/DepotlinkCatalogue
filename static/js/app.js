@@ -780,14 +780,13 @@ $$(document).on("page:init", function (e) {
       input = document.getElementById('searchitem');
       filter = input.value.toUpperCase();
       dl = document.getElementsByTagName('dl-routing');
-    
+
       // Loop through all dl-routing elements, and hide those who don't match the search query
       for (var i = 0; i < dl.length; i++) {
         // Find the .post-category within the dl-routing element
         dlItems = dl[i].getElementsByClassName('post-category');
         if (dlItems.length > 0) {
           txtValue = dlItems[0].textContent || dlItems[0].innerText;
-          console.log(txtValue);
           if (txtValue.toUpperCase().indexOf(filter) > -1) {
             dl[i].style.display = "";
           } else {
