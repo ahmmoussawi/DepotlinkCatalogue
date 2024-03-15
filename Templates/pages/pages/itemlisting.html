@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Your app title -->
+    <title>DepotLink</title>
+    <!-- <link rel="stylesheet" href="{% static 'css/framework7-bundle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/framework7-icons.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'css/itempdf.css' %}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="DepotLink">
+    <meta property="og:description" content="Marketplace Gateway">
+    <meta property="og:image" content="{% static 'images/defaultbrand.png' %}">
+    <meta property="og:url" content="http://depotlink.co">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DepotLink">
+    <meta name="twitter:description" content="Marketplace Gateway">
+    <meta name="twitter:image" content="{% static 'images/defaultbrand.png' %}">
+
+    <!-- Icons for Mobile Home Screen -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/defaultbrand.png' %}">
+    <link rel="icon" sizes="192x192" href="{% static 'images/defaultbrand.png' %}">
+    
+  </head>
+  <body>
+    <!-- App root element -->
+            <div class="page-content">
+                <header class="site-header">
+                    <div class="site-identity">
+                      <a href="#"><img src="{%  static 'images/depotlinklogo.png' %}" alt="Site Name" /></a>
+                    </div>  
+                    <nav class="site-navigation">
+                      <ul class="nav">
+                        <li id="printdate"><a href="#">DepotLink Categories</a></li> 
+                      </ul>
+                    </nav>
+                  </header>
+ 
+                <div class="d-flex w-80" style="padding: 15px">
+                    {% for category in categories %}
+                    <a href="{% url 'itempdf' category.id %}">
+                    <div class="categorybtn left bg-blue float-right text-white neumorphic outset" style="margin: 10px 10px 10px 10px;">{{ category.name }}</div>
+                    </a> 
+                    {% endfor %}
+                </div><br/><br/><br/>
+            </div>
+             
+
+            </div>
+          </div>
+        </div>
+
+        
+      </div>
+    </div>
+    <script src="{% static 'js/framework7-bundle.js' %}"></script>
+    
+    
+  </body>
+</html>

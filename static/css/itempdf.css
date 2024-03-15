@@ -131,6 +131,17 @@ border: solid 2px #101743;
 .float-right {
     float: right;
 }
+.categorybtn {
+    height: 2.5em;
+    display: flex;
+    cursor: pointer;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #e0e5ec;
+    position: relative;
+    padding: 0px 5px 0px 5px;
+}
 .btn {
     height: 1.5em;
     display: flex;

@@ -119,6 +119,14 @@ def categories(request):
 
     return render(request, 'pages/pages/categories-list.html',context)
 
+def AllItemCategories(request):
+    categories = Category.objects.all().order_by('-created')
+    
+    context= {'categories':categories}
+
+    return render(request, 'pages/pages/itemlisting.html',context)
+
+
 def is_mobile(request):
     """Simple detection of mobile devices."""
     user_agent = request.META.get('HTTP_USER_AGENT', '').lower()
